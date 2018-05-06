@@ -30,7 +30,7 @@ function generateAddition(upper, lower, parameters) {
     format += ' '.repeat(spaces - nearestBaseTen(current)) + current + '\n';
   }
 
-  format += '+' + '-'.repeat(spaces);
+  format += '+' + '_'.repeat(spaces);
   return {
     parameters: params,
     solution: solution,

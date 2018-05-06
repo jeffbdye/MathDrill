@@ -17,7 +17,7 @@
 
   <div id="response-area" style="display: none;">
     <div class="container">
-      <textarea id="problem" rows="3"></textarea>
+      <textarea id="problem" readonly rows="3"></textarea>
     </div>
     <div class="container">
       <input type="text" id="answer" onkeypress="submitProblem(this, event)" />
@@ -37,11 +37,13 @@
 
   textarea {
     font-size: 20px;
-    height: 30%;
-    width: 30%;
+    height: 10%;
+    width: 10%;
     margin: 3px;
     resize: none;
     font-family: monospace;
+    border: none;
+    cursor: default;
   }
 </style>
 
