@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0">
+  <title>MathDrill</title>
+</head>
+
+<body>
+  <h1>MathDrill</h1>
+  <div class="container">
+    <label for="upper">Upper</label>
+    <input type="text" name="upper" id="upper" />
+    <label for="lower">Lower</label>
+    <input type="text" name="lower" id="lower" />
+    <button id="start">Start</button>
+  </div>
+
+  <div id="response-area" style="display: none;">
+    <div class="container">
+      <textarea id="problem" rows="3"></textarea>
+    </div>
+    <div class="container">
+      <input type="text" id="answer" onkeypress="submitProblem(this, event)" />
+      <button id="submit">Submit</button>
+    </div>
+  </div>
+
+  <script src="./generator.js"></script>
+  <script src="./index.js"></script>
+</body>
+<style>
+  .container {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+  }
+
+  textarea {
+    font-size: 20px;
+    height: 30%;
+    width: 30%;
+    margin: 3px;
+    resize: none;
+    font-family: monospace;
+  }
+</style>
+
+</html>
