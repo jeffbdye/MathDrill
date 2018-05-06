@@ -12,11 +12,11 @@
   <form onsubmit="return setupGame(event)">
     <div class="container config">
       <div>
-        <label for="upper">Upper number</label>
+        <label for="upper">Upper limit</label>
         <input type="number" name="upper" id="upper" max="2147483647" min="1" />
       </div>
       <div>
-        <label for="lower">Lower number</label>
+        <label for="lower">Lower limit</label>
         <input type="number" name="lower" id="lower" max="2147483647" min="-2147483647" />
       </div>
       <div style="align-self: center">
@@ -44,6 +44,9 @@
   <script src="./index.js"></script>
 </body>
 <style>
+  html {
+    font-family: sans-serif;
+  }
   .container {
     display: flex;
     padding: 10px;
