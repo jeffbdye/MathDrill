@@ -30,12 +30,12 @@
     </div>
   </form>
 
-  <div id="response-area" style="display: none;">
+  <div id="quiz" style="display: none;">
     <div class="container">
       <textarea id="problem" readonly rows="3"></textarea>
     </div>
-    <div class="container">
-      <input type="text" id="response" onkeypress="handleResponse(this, event)" />
+    <div id="response-area" class="container">
+      <input type="text" id="response-input" onkeypress="handleResponse(this, event)" />
       <button id="submit" onclick="submitClicked(event)">Submit</button>
     </div>
   </div>
@@ -47,6 +47,7 @@
   html {
     font-family: sans-serif;
   }
+
   .container {
     display: flex;
     padding: 10px;
@@ -69,6 +70,32 @@
 
   .config input {
     width: 95%;
+  }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+  .apply-shake {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  }
+
+  .apply-shake input {
+    box-shadow: 0 0 3px #CC0000;
   }
 </style>
 

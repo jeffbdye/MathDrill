@@ -45,10 +45,12 @@ function nearestBaseTen(number) {
   return Math.floor(Math.log10(number));
 }
 
+// [min, max)
 function inclusiveRandom(max, min) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// [min, max]
 function minInclusiveRandom(max, min) {
   return Math.floor(Math.random() * (max - min) + min);
 }

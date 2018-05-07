@@ -10,7 +10,8 @@ var currentProblem = null; // active problem
 var startElement = document.getElementById('start');
 var restartElement = document.getElementById('restart');
 var problemElement = document.getElementById('problem');
-var responseElement = document.getElementById('response')
+var responseArea = document.getElementById('response-area');
+var responseElement = document.getElementById('response-input')
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
 // params, problems element
@@ -23,6 +24,10 @@ function initialize() {
 
   upperElement.value = upper;
   lowerElement.value = lower;
+
+  responseArea.addEventListener('animationend', (e) => {
+    responseArea.classList.remove('apply-shake');
+  });
 }
 
 function setupGame(event) {
@@ -30,8 +35,8 @@ function setupGame(event) {
     // start game
     // - unhide input area
     gameState = 'ongoing';
-    var responseSection = document.getElementById('response-area');
-    responseSection.style.display = 'block';
+    var quizSection = document.getElementById('quiz');
+    quizSection.style.display = 'block';
     startElement.style.display = 'none';
     restartElement.style.display = 'flex';
   }
@@ -68,7 +73,7 @@ function validateResponse(response) {
     updateProblem();
   } else {
     // wrong - inform the user
-    alert('WRONG');
+    responseArea.classList.add('apply-shake');
   }
 
   responseElement.value = null;
