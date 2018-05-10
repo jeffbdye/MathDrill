@@ -7,7 +7,7 @@ function settingsLoop() {
   var numProbs = 3;
   var upper = 10;
   var lower = 0;
-  var type = 'addition';
+  var type = 'subtraction';
   var params = 2;
   for (var i = 0; i < numProbs; i++) {
     console.log('problem ' + (i + 1));

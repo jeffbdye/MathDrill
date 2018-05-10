@@ -11,7 +11,7 @@ var startElement = document.getElementById('start');
 var restartElement = document.getElementById('restart');
 var problemElement = document.getElementById('problem');
 var responseArea = document.getElementById('response-area');
-var responseElement = document.getElementById('response-input')
+var responseElement = document.getElementById('response-input');
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
 // params, problems element
