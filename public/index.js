@@ -12,6 +12,7 @@ var restartElement = document.getElementById('restart');
 var problemElement = document.getElementById('problem');
 var responseArea = document.getElementById('response-area');
 var responseElement = document.getElementById('response-input');
+var typeElement = document.getElementById('type');
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
 // params, problems element
@@ -24,6 +25,7 @@ function initialize() {
 
   upperElement.value = upper;
   lowerElement.value = lower;
+  typeElement.value = problemType;
 
   responseArea.addEventListener('animationend', (e) => {
     responseArea.classList.remove('apply-shake');
@@ -43,10 +45,12 @@ function setupGame(event) {
 
   // restart game
   // - capture settings
-  // - generate first problem
   upper = upperElement.value.trim();
   lower = lowerElement.value.trim();
-  // params, problem type
+  problemType = typeElement.value;
+  // TODO: num params, problem type
+
+  // - generate first problem
   updateProblem();
   responseElement.focus();
   return false;

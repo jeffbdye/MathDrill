@@ -11,6 +11,12 @@
 
   <form onsubmit="return setupGame(event)">
     <div class="container config">
+      <div style="align-self: flex-end">
+        <select id="type">
+          <option value="addition" selected>Addition</option>
+          <option value="subtraction">Subtraction</option>
+        </select>
+      </div>
       <div>
         <label for="upper">Upper limit</label>
         <input type="number" name="upper" id="upper" max="2147483647" min="1" />
@@ -21,12 +27,12 @@
       </div>
       <div style="align-self: flex-end">
         <button id="restart" type="submit" style="display: none">
-          <i class="fa fa-refresh" id="restart" aria-hidden="true" title="Restart game"></i> Restart
+          <i class="fa fa-refresh" id="restart" aria-hidden="true" style="align-self: flex-end"></i> Restart
         </button>
       </div>
     </div>
     <div class="container">
-      <button type="submit" id="start">Start</button>
+      <button type="submit" id="start" class="primary">Start</button>
     </div>
   </form>
 
@@ -64,12 +70,33 @@
     text-align: center;
   }
 
+  .config div {
+    padding: 4px;
+  }
+
   .config label {
     display: inline-block;
   }
 
   .config input {
     width: 95%;
+  }
+
+  button {
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+  }
+
+  button.primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff
+  }
+
+  button.primary:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
   }
 
 @keyframes shake {
