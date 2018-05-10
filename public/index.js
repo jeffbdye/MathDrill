@@ -15,7 +15,7 @@ var responseElement = document.getElementById('response-input');
 var typeElement = document.getElementById('type');
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
-// params, problems element
+// params element
 
 function initialize() {
   // ensure generator code loaded
@@ -48,7 +48,7 @@ function setupGame(event) {
   upper = upperElement.value.trim();
   lower = lowerElement.value.trim();
   problemType = typeElement.value;
-  // TODO: num params, problem type
+  // TODO: num params
 
   // - generate first problem
   updateProblem();
