@@ -15,6 +15,8 @@ var responseElement = document.getElementById('response-input');
 var typeElement = document.getElementById('type');
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
+
+var helpElement = document.getElementById('help-text');
 // params element
 
 function initialize() {
@@ -35,7 +37,8 @@ function initialize() {
 function setupGame(event) {
   if (gameState === 'new') {
     // start game
-    // - unhide input area
+    // - unhide quiz area
+    // - show restart button
     gameState = 'ongoing';
     var quizSection = document.getElementById('quiz');
     quizSection.style.display = 'block';
@@ -86,6 +89,14 @@ function validateResponse(response) {
 function updateProblem() {
   currentProblem = generateProblem(upper, lower, params, problemType);
   problemElement.innerHTML = currentProblem.format;
+}
+
+function toggleHelp() {
+  if (helpElement.style.display === 'none') {
+    helpElement.style.display = 'inherit';
+  } else {
+    helpElement.style.display = 'none';
+  }
 }
 
 initialize();

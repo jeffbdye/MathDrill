@@ -1,0 +1,100 @@
+html {
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+textarea {
+  font-size: 20px;
+  margin: 3px;
+  resize: none;
+  font-family: monospace;
+  border: none;
+  cursor: default;
+  text-align: center;
+}
+
+.config div {
+  padding: 4px;
+}
+
+.config label {
+  display: inline-block;
+}
+
+.config input {
+  width: 95%;
+}
+
+button {
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+}
+
+button.primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff
+}
+
+button.primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.apply-shake {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.apply-shake input {
+  box-shadow: 0 0 3px #CC0000;
+}
+
+.header {
+  display: flex;
+}
+
+.help-info {
+  align-self: center;
+  border: none;
+  background: transparent;
+  color: #6c757d;
+  margin-left: 5px;
+  display: inline;
+  cursor: pointer;
+}
+
+#help-text {
+  align-self: center;
+  margin-left: 10px;
+  display: inherit;
+  max-width: 350px;
+}
+
+.restart-icon {
+  align-self: flex-end;
+  margin-right: 5px;
+}
