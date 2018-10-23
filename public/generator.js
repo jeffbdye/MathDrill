@@ -5,8 +5,8 @@ function generateProblem(upper, lower, parameters, type) {
       return generateAddition(upper, lower, parameters);
     case 'subtraction':
       return generateSubtraction(upper, lower, parameters);
-    // case 'multipication':
-    //   break;
+    case 'multiplication':
+      return generateMultiplication(upper, lower, parameters);
     // case 'division':
     //   break;
     default:
@@ -19,16 +19,16 @@ function generateAddition(upper, lower, parameters) {
   var params = [];
   var solution = 0;
   var format = '';
-  var spaces = nearestBaseTen(upper);
+  const spaces = numberOfDigits(upper);
   const max = Math.floor(upper);
-  var min = Math.ceil(lower);
+  const min = Math.ceil(lower);
 
   // add up n params within upper, lower to get solution
   for (var i = 0; i < parameters; i++) {
     let current = inclusiveRandom(max, min);
     params.push(current);
     solution += current;
-    format += ' '.repeat(spaces - nearestBaseTen(current)) + current + '\n';
+    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
 
   format += '+' + '_'.repeat(spaces);
@@ -42,17 +42,17 @@ function generateAddition(upper, lower, parameters) {
 function generateSubtraction(upper, lower, parameters) {
   var params = [];
   var format = '';
-  var spaces = nearestBaseTen(upper);
-  var min = Math.ceil(lower);
+  const spaces = numberOfDigits(upper);
+  const min = Math.ceil(lower);
 
   // start at a random number, subtract off n params to get solution
-  var solution = inclusiveRandom(upper, lower);
-  format += ' '.repeat(spaces - nearestBaseTen(solution)) + solution + '\n';
+  var solution = inclusiveRandom(upper, min);
+  format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
   for (var i = 0; i < parameters - 1; i++) {
     let current = inclusiveRandom(solution, min);
     params.push(current);
     solution -= current;
-    format += ' '.repeat(spaces - nearestBaseTen(current)) + current + '\n';
+    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
 
   format += '-' + '_'.repeat(spaces);
@@ -63,11 +63,37 @@ function generateSubtraction(upper, lower, parameters) {
   };
 }
 
-function nearestBaseTen(number) {
-  if (number === 0) {
-    return 0;
+function generateMultiplication(upper, lower, parameters) {
+  var params = [];
+  var format = '';
+  const max = Math.ceil(upper);
+  const min = Math.floor(lower);
+  const spaces = numberOfDigits(upper);
+
+  // start with a random base number and multiply up
+  var solution = inclusiveRandom(max, min);
+  params.push(solution);
+  format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
+
+  for (var i = 1; i < parameters; i++) {
+    let current = inclusiveRandom(max, min);
+    params.push(current);
+    solution *= current;
+    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
-  return Math.floor(Math.log10(number));
+
+  format += 'x' + '_'.repeat(spaces);
+
+  return {
+    parameters: params,
+    solution: solution,
+    format: format
+  };
+}
+
+function numberOfDigits(number) {
+  // ugh
+  return number.toString().length;
 }
 
 // [min, max)
