@@ -1,9 +1,7 @@
 let generateProblem = require('./public/generator');
-let readline = require('readline');
 let readlineSync = require('readline-sync');
 
 function settingsLoop() {
-  console.log('starting loop');
   var numProbs = 3;
   var upper = 10;
   var lower = 0;

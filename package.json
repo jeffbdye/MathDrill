@@ -10,11 +10,11 @@
   "author": "Jeff Dye",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
-    "serve-static": "^1.13.2"
+    "express": "4.16.3",
+    "serve-static": "1.13.2"
   },
   "devDependencies": {
-    "jshint": "^2.9.5",
-    "readline-sync": "^1.4.9"
+    "jshint": "2.9.5",
+    "readline-sync": "1.4.9"
   }
 }
