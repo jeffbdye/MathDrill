@@ -15,8 +15,8 @@ function generateProblem(upper, lower, parameters, type) {
   }
 }
 
-function generateAddition(upper, lower, parameters) {
-  var params = [];
+function generateAddition(upper, lower, numOperands) {
+  var operands = [];
   var solution = 0;
   var format = '';
   const spaces = numberOfDigits(upper);
@@ -24,23 +24,23 @@ function generateAddition(upper, lower, parameters) {
   const min = Math.ceil(lower);
 
   // add up n params within upper, lower to get solution
-  for (var i = 0; i < parameters; i++) {
+  for (var i = 0; i < numOperands; i++) {
     let current = inclusiveRandom(max, min);
-    params.push(current);
+    operands.push(current);
     solution += current;
     format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
 
   format += '+' + '_'.repeat(spaces);
   return {
-    parameters: params,
+    parameters: operands,
     solution: solution,
     format: format
   };
 }
 
-function generateSubtraction(upper, lower, parameters) {
-  var params = [];
+function generateSubtraction(upper, lower, numOperands) {
+  var operands = [];
   var format = '';
   const spaces = numberOfDigits(upper);
   const min = Math.ceil(lower);
@@ -48,23 +48,23 @@ function generateSubtraction(upper, lower, parameters) {
   // start at a random number, subtract off n params to get solution
   var solution = inclusiveRandom(upper, min);
   format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
-  for (var i = 0; i < parameters - 1; i++) {
+  for (var i = 0; i < numOperands - 1; i++) {
     let current = inclusiveRandom(solution, min);
-    params.push(current);
+    operands.push(current);
     solution -= current;
     format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
 
   format += '-' + '_'.repeat(spaces);
   return {
-    parameters: params,
+    parameters: operands,
     solution: solution,
     format: format
   };
 }
 
-function generateMultiplication(upper, lower, parameters) {
-  var params = [];
+function generateMultiplication(upper, lower, numOperands) {
+  var operands = [];
   var format = '';
   const max = Math.ceil(upper);
   const min = Math.floor(lower);
@@ -72,12 +72,12 @@ function generateMultiplication(upper, lower, parameters) {
 
   // start with a random base number and multiply up
   var solution = inclusiveRandom(max, min);
-  params.push(solution);
+  operands.push(solution);
   format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
 
-  for (var i = 1; i < parameters; i++) {
+  for (var i = 1; i < numOperands; i++) {
     let current = inclusiveRandom(max, min);
-    params.push(current);
+    operands.push(current);
     solution *= current;
     format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
   }
@@ -85,7 +85,7 @@ function generateMultiplication(upper, lower, parameters) {
   format += 'x' + '_'.repeat(spaces);
 
   return {
-    parameters: params,
+    parameters: operands,
     solution: solution,
     format: format
   };
