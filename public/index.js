@@ -17,7 +17,6 @@ var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
 
 var helpElement = document.getElementById('help-text');
-// params element
 
 function initialize() {
   // ensure generator code loaded
@@ -43,7 +42,7 @@ function setupGame(event) {
     var quizSection = document.getElementById('quiz');
     quizSection.style.display = 'block';
     startElement.style.display = 'none';
-    restartElement.style.display = 'flex';
+    restartElement.attributes.removeNamedItem('disabled');
   }
 
   // restart game
@@ -51,7 +50,7 @@ function setupGame(event) {
   upper = upperElement.value.trim();
   lower = lowerElement.value.trim();
   problemType = typeElement.value;
-  // TODO: num params
+  // TODO: number of operands
 
   // - generate first problem
   updateProblem();
@@ -92,10 +91,10 @@ function updateProblem() {
 }
 
 function toggleHelp() {
-  if (helpElement.style.display === 'none') {
-    helpElement.style.display = 'inherit';
+  if (helpElement.style.visibility === 'hidden') {
+    helpElement.style.visibility = 'inherit';
   } else {
-    helpElement.style.display = 'none';
+    helpElement.style.visibility = 'hidden';
   }
 }
 

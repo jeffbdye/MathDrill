@@ -1,3 +1,3 @@
 # MathDrill
 
-Site intended to help with practicing math problems. 
+Site intended to help with practicing math problems.
