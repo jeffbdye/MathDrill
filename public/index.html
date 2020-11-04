@@ -11,7 +11,7 @@
   <div class="header">
     <h1>MathDrill</h1>
     <span class="fa fa-info-circle help-info" onclick="toggleHelp()"></span>
-    <span id="help-text" style="display: none; user-select: none">
+    <span id="help-text" style="visibility: hidden; user-select: none">
       Click start to create problems of the given type based on the minimum and maximum numbers set.
       To change problem types or min/max, click restart.
     </span>
@@ -19,7 +19,7 @@
 
   <form onsubmit="return setupGame(event)">
     <div class="container config">
-      <div style="align-self: flex-end">
+      <div>
         <select id="type">
           <option value="addition" selected>Addition</option>
           <option value="subtraction">Subtraction</option>
@@ -34,9 +34,9 @@
         <label for="lower">Minimum</label>
         <input type="number" name="lower" id="lower" max="2147483647" min="-2147483647" />
       </div>
-      <div style="align-self: flex-end">
-        <button id="restart" type="submit" style="display: none">
-          <i class="fa fa-refresh restart-icon" id="restart" aria-hidden="true"></i>
+      <div>
+        <button id="restart" type="submit" disabled>
+          <i class="fa fa-refresh restart-icon" id="restart"></i>
           Restart
         </button>
       </div>
