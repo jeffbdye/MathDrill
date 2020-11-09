@@ -16,19 +16,19 @@ function generateProblem(upper, lower, parameters, type) {
 }
 
 function generateAddition(upper, lower, numOperands) {
-  var operands = [];
-  var solution = 0;
-  var format = '';
+  let operands = [];
+  let solution = 0;
+  let format = '';
   const spaces = numberOfDigits(upper);
   const max = Math.floor(upper);
   const min = Math.ceil(lower);
 
   // add up n params within upper, lower to get solution
-  for (var i = 0; i < numOperands; i++) {
-    let current = inclusiveRandom(max, min);
+  for (let i = 0; i < numOperands; i++) {
+    const current = inclusiveRandom(max, min);
     operands.push(current);
     solution += current;
-    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
+    format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + current + '\n';
   }
 
   format += '+' + '_'.repeat(spaces);
@@ -40,19 +40,19 @@ function generateAddition(upper, lower, numOperands) {
 }
 
 function generateSubtraction(upper, lower, numOperands) {
-  var operands = [];
-  var format = '';
+  let operands = [];
+  let format = '';
   const spaces = numberOfDigits(upper);
   const min = Math.ceil(lower);
 
   // start at a random number, subtract off n params to get solution
-  var solution = inclusiveRandom(upper, min);
-  format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
-  for (var i = 0; i < numOperands - 1; i++) {
+  let solution = inclusiveRandom(upper, min);
+  format += ' '.repeat(spaces - numberOfDigits(solution) + 1) + solution + '\n';
+  for (let i = 0; i < numOperands - 1; i++) {
     let current = inclusiveRandom(solution, min);
     operands.push(current);
     solution -= current;
-    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
+    format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + current + '\n';
   }
 
   format += '-' + '_'.repeat(spaces);
@@ -64,8 +64,8 @@ function generateSubtraction(upper, lower, numOperands) {
 }
 
 function generateMultiplication(upper, lower, numOperands) {
-  var operands = [];
-  var format = '';
+  let operands = [];
+  let format = '';
   const max = Math.ceil(upper);
   const min = Math.floor(lower);
   const spaces = numberOfDigits(upper);
@@ -73,13 +73,13 @@ function generateMultiplication(upper, lower, numOperands) {
   // start with a random base number and multiply up
   var solution = inclusiveRandom(max, min);
   operands.push(solution);
-  format += ' '.repeat(spaces - numberOfDigits(solution)) + solution + '\n';
+  format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + solution + '\n';
 
   for (var i = 1; i < numOperands; i++) {
     let current = inclusiveRandom(max, min);
     operands.push(current);
     solution *= current;
-    format += ' '.repeat(spaces - numberOfDigits(current)) + current + '\n';
+    format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + current + '\n';
   }
 
   format += 'x' + '_'.repeat(spaces);
@@ -94,6 +94,10 @@ function generateMultiplication(upper, lower, numOperands) {
 function numberOfDigits(number) {
   // ugh
   return number.toString().length;
+}
+
+function getLeadingSpacesForNumber(spaces, current) {
+  return spaces - numberOfDigits(current) + 1;
 }
 
 // [min, max)
