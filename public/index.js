@@ -46,7 +46,7 @@ function setupGame(event) {
     // - show restart button
     gameState = 'ongoing';
     var quizSection = document.getElementById('quiz');
-    quizSection.style.display = 'block';
+    quizSection.style.display = 'inherit';
     startElement.style.display = 'none';
     restartElement.attributes.removeNamedItem('disabled');
   }
