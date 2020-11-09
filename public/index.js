@@ -29,7 +29,13 @@ function initialize() {
   typeElement.value = problemType;
 
   responseArea.addEventListener('animationend', (e) => {
-    responseArea.classList.remove('apply-shake');
+    if (responseArea.classList.contains('apply-shake')) {
+      responseArea.classList.remove('apply-shake');
+    }
+
+    if (responseArea.classList.contains('correct-answer')) {
+      responseArea.classList.remove('correct-answer');
+    }
   });
 }
 
@@ -40,7 +46,7 @@ function setupGame(event) {
     // - show restart button
     gameState = 'ongoing';
     var quizSection = document.getElementById('quiz');
-    quizSection.style.display = 'block';
+    quizSection.style.display = 'inherit';
     startElement.style.display = 'none';
     restartElement.attributes.removeNamedItem('disabled');
   }
@@ -77,6 +83,7 @@ function validateResponse(response) {
   if (response === '' + currentProblem.solution) { // compare against solution
     // correct - new problem if still under numProblems, else ended/stop time
     updateProblem();
+    responseArea.classList.add('correct-answer');
   } else {
     // wrong - inform the user
     responseArea.classList.add('apply-shake');
