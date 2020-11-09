@@ -101,6 +101,20 @@ button.primary:hover {
   box-shadow: 0 0 3px #CC0000;
 }
 
+@keyframes flash-green {
+  0% {
+    box-shadow: 0 0 12px #00C000;
+  }
+
+  100% {
+    box-shadow: none;
+  }
+}
+
+.correct-answer input {
+  animation: flash-green .5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .restart-icon {
   align-self: flex-end;
   margin-right: 5px;
