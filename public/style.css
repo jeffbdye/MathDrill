@@ -8,12 +8,12 @@ html {
   justify-content: center;
 }
 
-.header {
+#header {
   display: flex;
   align-items: center;
 }
 
-.help-info {
+#help-toggle {
   align-self: center;
   border: none;
   background: transparent;
@@ -30,32 +30,39 @@ html {
   max-width: 350px;
 }
 
-textarea {
-  font-size: 20px;
-  margin: 3px;
-  resize: none;
-  font-family: monospace;
-  border: none;
-  cursor: default;
-  text-align: center;
-  user-select: none;
-}
-
-.config {
+#config {
   align-items: flex-end;
   justify-content: space-around;
 }
 
-.config div {
+#config div {
   padding: 4px;
 }
 
-.config label {
+#config label {
   display: inline-block;
 }
 
-.config input {
+#config input {
   width: 95%;
+}
+
+#problem-set {
+  align-items: center;
+  text-align: center;
+}
+
+#problem-set div, #problem-set pre {
+  flex: 1;
+  margin: 0 auto;
+}
+
+#problem {
+  font-size: 24px;
+}
+
+#problem, #timer {
+  font-family: monospace;
 }
 
 #submit, #start {

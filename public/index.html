@@ -17,9 +17,9 @@
 </head>
 
 <body>
-  <div class="header">
+  <div id="header">
     <h1>MathDrill</h1>
-    <span class="fa fa-info-circle help-info" onclick="toggleHelp()"></span>
+    <span id="help-toggle" class="fa fa-info-circle" onclick="toggleHelp()"></span>
     <span id="help-text" style="visibility: hidden; user-select: none">
       Click start to create problems of the given type based on the minimum and maximum numbers set.
       To change problem types or min/max, click restart.
@@ -27,7 +27,7 @@
   </div>
 
   <form onsubmit="return setupGame(event)">
-    <div class="container config">
+    <div id="config" class="container">
       <div>
         <select id="type">
           <option value="addition" selected>Addition</option>
@@ -56,8 +56,10 @@
   </form>
 
   <div id="quiz" style="display: none;">
-    <div class="container">
-      <textarea id="problem" readonly rows="3"></textarea>
+    <div id="problem-set" class="container">
+      <div id="score">0</div>
+      <pre id="problem"></pre>
+      <div id="timer">00:00:00</div>
     </div>
     <div id="response-area" class="container">
       <input type="number" id="response-input" onkeypress="handleResponse(this, event)" />
