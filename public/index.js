@@ -3,9 +3,11 @@ var gameState = 'new'; // new, ongoing, ended
 // new => ongoing => ended
 // ongoing => ongoing
 
-var upper = 10, lower = 0, params = 2, problems = 10;
+var upper = 10, lower = 0, params = 2;
 var problemType = 'addition'; // subtraction, multiplication, division
 var currentProblem = null; // active problem
+var score = 0;
+var timerReference = undefined;
 
 var startElement = document.getElementById('start');
 var restartElement = document.getElementById('restart');
@@ -15,6 +17,8 @@ var responseElement = document.getElementById('response-input');
 var typeElement = document.getElementById('type');
 var upperElement = document.getElementById('upper');
 var lowerElement = document.getElementById('lower');
+var scoreElement = document.getElementById('score');
+var timerElement = document.getElementById('timer');
 
 var helpElement = document.getElementById('help-text');
 
@@ -58,8 +62,11 @@ function setupGame(event) {
   problemType = typeElement.value;
   // TODO: number of operands
 
-  // - generate first problem
+  // - generate first problem, update scoring and timer
   updateProblem();
+  setScore(0);
+  restartTimer();
+  // - autofocus so user can start typing
   responseElement.focus();
   return false;
 }
@@ -84,6 +91,7 @@ function validateResponse(response) {
     // correct - new problem if still under numProblems, else ended/stop time
     updateProblem();
     responseArea.classList.add('correct-answer');
+    setScore(++score);
   } else {
     // wrong - inform the user
     responseArea.classList.add('apply-shake');
@@ -95,6 +103,30 @@ function validateResponse(response) {
 function updateProblem() {
   currentProblem = generateProblem(upper, lower, params, problemType);
   problemElement.innerHTML = currentProblem.format;
+}
+
+function setScore(value) {
+  score = value;
+  scoreElement.innerHTML = score; 
+}
+
+function restartTimer() {
+  timerReference = Date.now();
+  updateTimer();
+}
+
+function updateTimer() {
+  // formatting timespan values thanks to https://stackoverflow.com/a/53000727/1590867
+  const value = Date.now() - timerReference;
+  timerElement.innerHTML = `${format(value, 60000, 60, 2)}:${format(value, 1000, 60, 2)}:${format(value, 1, 1000, 3)}`;
+  if (gameState === 'ongoing') {
+    requestAnimationFrame(updateTimer);
+  }
+}
+
+function format(value, scale, modulo, padding) {
+  value = Math.floor(value / scale) % modulo;
+  return value.toString().padStart(padding, 0);
 }
 
 function toggleHelp() {
