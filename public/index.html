@@ -57,9 +57,15 @@
 
   <div id="quiz" style="display: none;">
     <div id="problem-set" class="container">
-      <div id="score">0</div>
+      <div class="vertical">
+        Score
+        <div id="score">0</div>
+      </div>
       <pre id="problem"></pre>
-      <div id="timer">00:00:00</div>
+      <div class="vertical">
+        Time
+        <div id="timer">00:00:00</div>
+      </div>
     </div>
     <div id="response-area" class="container">
       <input type="number" id="response-input" onkeypress="handleResponse(this, event)" />

@@ -8,6 +8,11 @@ html {
   justify-content: center;
 }
 
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+
 #header {
   display: flex;
   align-items: center;
@@ -57,12 +62,20 @@ html {
   margin: 0 auto;
 }
 
+#score, #problem, #timer {
+  font-family: monospace;
+}
+
+#score {
+  font-size: 20px;
+}
+
 #problem {
   font-size: 24px;
 }
 
-#problem, #timer {
-  font-family: monospace;
+#timer {
+  font-size: 16px;
 }
 
 #submit, #start {
