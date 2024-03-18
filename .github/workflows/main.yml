@@ -1,0 +1,21 @@
+name: main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  cicd:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy
+      uses: shallwefootball/s3-upload-action@master
+      with:
+        source_dir: public/
+        destination_dir: ''
+        aws_key_id: ${{ secrets.AWS_KEY }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+        aws_bucket: ${{ secrets.AWS_BUCKET }}
