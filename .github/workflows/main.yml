@@ -1,6 +1,7 @@
 name: main
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
 
@@ -12,10 +13,18 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Deploy
-      uses: shallwefootball/s3-upload-action@master
-      with:
-        source_dir: public/
-        destination_dir: ''
-        aws_key_id: ${{ secrets.AWS_KEY }}
-        aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
-        aws_bucket: ${{ secrets.AWS_BUCKET }}
+      run: aws s3 sync public/ s3://$AWS_BUCKET/ --delete
+      env:
+        AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        AWS_REGION: us-east-1
+
+    - name: Invalidate cache
+      uses: chetan/invalidate-cloudfront-action@v2.4
+      env:
+        PATHS: "/index.*"
+        AWS_REGION: "us-east-1"
+        DISTRIBUTION: ${{ secrets.AWS_DISTRIBUTION }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
