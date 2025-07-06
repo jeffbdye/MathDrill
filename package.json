@@ -8,9 +8,10 @@
   "author": "Jeff Dye",
   "license": "GNU",
   "devDependencies": {
-    "express": "^4.21.2",
-    "jshint": "2.13.6",
-    "readline-sync": "1.4.9",
-    "serve-static": "1.14.1"
+    "@eslint/js": "^9.30.1",
+    "eslint": "^9.30.1",
+    "express": "5.1.0",
+    "readline-sync": "1.4.10",
+    "serve-static": "2.2.0"
   }
 }

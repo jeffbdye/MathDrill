@@ -101,13 +101,13 @@ function validateResponse(response) {
 }
 
 function updateProblem() {
-  currentProblem = generateProblem(upper, lower, params, problemType);
+  currentProblem = window.generateProblem(upper, lower, params, problemType);
   problemElement.innerHTML = currentProblem.format;
 }
 
 function setScore(value) {
   score = value;
-  scoreElement.innerHTML = score; 
+  scoreElement.innerHTML = score;
 }
 
 function restartTimer() {

@@ -73,10 +73,11 @@ function generateMultiplication(upper, lower, numOperands) {
   // start with a random base number and multiply up
   var solution = inclusiveRandom(max, min);
   operands.push(solution);
+  let current = inclusiveRandom(max, min);
   format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + solution + '\n';
 
   for (var i = 1; i < numOperands; i++) {
-    let current = inclusiveRandom(max, min);
+    current = inclusiveRandom(max, min);
     operands.push(current);
     solution *= current;
     format += ' '.repeat(getLeadingSpacesForNumber(spaces, current)) + current + '\n';
@@ -106,11 +107,13 @@ function inclusiveRandom(max, min) {
 }
 
 // [min, max]
-function minInclusiveRandom(max, min) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+// function minInclusiveRandom(max, min) {
+//   return Math.floor(Math.random() * (max - min) + min);
+// }
 
+// eslint-disable-next-line no-undef
 if (typeof module !== 'undefined' && this.module !== module) { // export for testing
+  // eslint-disable-next-line no-undef
   module.exports = generateProblem;
 } else {
   window.generateProblem = generateProblem;
